@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: Backend-Buhos-Eat
+
+  datasource:
+    url: ${DATABASE_URL}
+    username: ${DATABASE_USERNAME}
+    password: ${DATABASE_PASSWORD}
+
+  jpa:
+    show-sql: false
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  servlet:
+    multipart:
+      max-file-size: 15MB
+      max-request-size: 15MB
+      enabled: true
+
+server:
+  port: ${PORT}
+
+app:
+  jwt-secret: ${JWT_SECRET}
+  jwt-expiration-time: ${JWT_EXPIRATION_TIME}
