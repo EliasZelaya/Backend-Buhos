@@ -44,6 +44,7 @@ public class SecurityConfig implements WebMvcConfigurer {
                     authorizeRequests
                             .requestMatchers("/api/auth/**").permitAll()
                             .requestMatchers("/api/user/create").permitAll()
+                            .requestMatchers("/uploads/**").permitAll()
                             .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                             .anyRequest().authenticated();
                 }).httpBasic(Customizer.withDefaults());
@@ -69,6 +70,6 @@ public class SecurityConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/uploads/**")
-                .addResourceLocations("file:./uploads/"); // o usa ruta absoluta si querés
+                .addResourceLocations("file:./uploads/");
     }
 }
