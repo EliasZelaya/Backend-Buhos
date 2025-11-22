@@ -1,5 +1,6 @@
 package com.example.eeza.backendbuhoseat.domain.dto.response.local;
 
+import com.example.eeza.backendbuhoseat.domain.embeddables.Direction;
 import com.example.eeza.backendbuhoseat.utils.Type;
 import lombok.Builder;
 import lombok.Data;
@@ -13,7 +14,7 @@ public class LocalResponse {
     private String name;
     private String description;
     private String phone;
-    private String direction;
+    private Direction direction;
     private String type;
     private String schedule;
     private String image;
