@@ -153,7 +153,7 @@ public class UserServiceImpl implements UserService {
         if(!updatePasswordRequest.getPassword().equals(updatePasswordRequest.getConfirmPassword()))
             throw new BadRequestException(NOT_PASSWORD_EQUALS);
 
-        user.setPassword(updatePasswordRequest.getPassword());
+        user.setPassword(bCryptPasswordEncoder.encode(updatePasswordRequest.getPassword()));
 
         userRepository.save(user);
     }

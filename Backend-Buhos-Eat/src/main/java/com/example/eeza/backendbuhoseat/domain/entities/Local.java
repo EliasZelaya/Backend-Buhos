@@ -1,5 +1,6 @@
 package com.example.eeza.backendbuhoseat.domain.entities;
 
+import com.example.eeza.backendbuhoseat.domain.embeddables.Direction;
 import com.example.eeza.backendbuhoseat.utils.Type;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -30,7 +31,7 @@ public class Local {
     private String phone;
 
     @Column(name = "direction")
-    private String direction;
+    private Direction direction;
 
     @Column(name = "type")
     @Enumerated(EnumType.STRING)

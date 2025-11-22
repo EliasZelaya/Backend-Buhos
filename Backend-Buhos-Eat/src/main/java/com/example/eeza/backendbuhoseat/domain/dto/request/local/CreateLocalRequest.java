@@ -1,8 +1,10 @@
 package com.example.eeza.backendbuhoseat.domain.dto.request.local;
 
-import com.example.eeza.backendbuhoseat.domain.entities.User;
+import com.example.eeza.backendbuhoseat.domain.embeddables.Direction;
 import com.example.eeza.backendbuhoseat.utils.Type;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -30,8 +32,9 @@ public class CreateLocalRequest {
     @Pattern(regexp = REGEXP_PHONE, message = INVALID_PHONE_FORMAT)
     private String phone;
 
-    @NotBlank(message = EMPTY_LOCAL_DIRECTION)
-    private String direction;
+    @NotNull(message = EMPTY_LOCAL_DIRECTION)
+    @Valid
+    private Direction direction;
 
     private Type type;
 

@@ -56,6 +56,15 @@ public class LocalServiceImpl implements LocalService {
         if (exist != null)
             throw new LocalAlreadyExistException(ENTITY_LOCAL+EXISTS);
 
+        Boolean existDirection = localRepository
+                .existsLocalByDirection_LatAndDirection_Lng(
+                        createLocalRequest.getDirection().getLat(),
+                        createLocalRequest.getDirection().getLng()
+                );
+
+        if(existDirection)
+            throw new DirectionAlreadyExistException(DIRECTION_EXIST);
+
         if(image != null) {
             String name = SaveImages.saveImagesHandler(image);
 
@@ -147,6 +156,17 @@ public class LocalServiceImpl implements LocalService {
             }
 
             if (updateLocalRequest.getDirection() != null) {
+                Boolean existDirection = localRepository
+                        .existsLocalByDirection_LatAndDirection_LngAndIdNot(
+                                updateLocalRequest.getDirection().getLat(),
+                                updateLocalRequest.getDirection().getLng(),
+                                updateLocalRequest.getId()
+                        );
+
+                if(existDirection) {
+                    throw new DirectionAlreadyExistException(DIRECTION_EXIST);
+                }
+
                 local.setDirection(updateLocalRequest.getDirection());
             }
 
@@ -172,7 +192,7 @@ public class LocalServiceImpl implements LocalService {
     @Transactional
     public void deleteLocalById(UUID id) {
         LocalResponse local = LocalMapper.toDto(localRepository.findById(id).orElseThrow(
-                () -> new LocalNotFoundException(ENTITY_USER+NOT_FOUND))
+                () -> new LocalNotFoundException(ENTITY_LOCAL+NOT_FOUND))
         );
 
         try {

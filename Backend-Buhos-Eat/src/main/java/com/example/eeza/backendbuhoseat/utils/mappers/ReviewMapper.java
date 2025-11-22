@@ -27,6 +27,15 @@ public class ReviewMapper {
                 .build();
     }
 
+    public static Review toEntity(ReviewResponse reviewResponse, User user, Local local) {
+        return Review.builder()
+                .id(reviewResponse.getReviewId())
+                .user(user)
+                .local(local)
+                .content(reviewResponse.getContent())
+                .build();
+    }
+
     public static List<ReviewResponse> toDtoList(List<Review> reviews) {
         return reviews.stream()
                 .map(ReviewMapper::toDto)

@@ -1,5 +1,6 @@
 package com.example.eeza.backendbuhoseat.domain.dto.request.local;
 
+import com.example.eeza.backendbuhoseat.domain.embeddables.Direction;
 import com.example.eeza.backendbuhoseat.utils.Type;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
@@ -27,7 +28,7 @@ public class UpdateLocalRequest {
     private String description;
     @Pattern(regexp = REGEXP_PHONE, message = INVALID_PHONE_FORMAT)
     private String phone;
-    private String direction;
+    private Direction direction;
     private Type type;
     @Pattern(regexp = REGEXP_IMAGE,  message = INVALID_FORMAT_IMAGE)
     private String image;
