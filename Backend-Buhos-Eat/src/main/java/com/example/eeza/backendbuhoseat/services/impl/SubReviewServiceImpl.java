@@ -64,8 +64,14 @@ public class SubReviewServiceImpl implements SubReviewService {
 
         return subReview;
     }
+
     public List<SubReviewResponse> getSubReviewsByUserId(UUID id) {
-        return null;
+        List<SubReviewResponse> subReview = SubReviewMapper.toDtoListResponse(subReviewRepository.findAllByUser_Id(id));
+
+        if(subReview.isEmpty())
+            throw new ReviewNotFoundException(ENTITY_SUBREVIEW+NOT_FOUND);
+
+        return subReview;
     }
     public void updateSubReview(UUID id, UpdateSubReviewRequest updateSubReviewRequest) {
     }
