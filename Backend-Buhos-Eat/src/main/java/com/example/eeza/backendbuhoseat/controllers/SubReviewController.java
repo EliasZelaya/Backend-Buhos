@@ -1,6 +1,7 @@
 package com.example.eeza.backendbuhoseat.controllers;
 
 import com.example.eeza.backendbuhoseat.domain.dto.request.subreview.CreateSubReviewRequest;
+import com.example.eeza.backendbuhoseat.domain.dto.request.subreview.UpdateSubReviewRequest;
 import com.example.eeza.backendbuhoseat.domain.dto.response.GeneralResponse;
 import com.example.eeza.backendbuhoseat.domain.entities.SubReview;
 import com.example.eeza.backendbuhoseat.services.SubReviewService;
@@ -46,6 +47,18 @@ public class SubReviewController {
                 .message(ENTITY_SUBREVIEW+FOUND)
                 .status(HttpStatus.OK)
                 .data(subReviewService.getSubReviewsByUserId(idUser))
+                .build()
+                .getResponse();
+    }
+
+    @PutMapping(UPDATE)
+    public ResponseEntity<GeneralResponse> updateSubReview(
+            @Valid @RequestBody UpdateSubReviewRequest updateSubReviewRequest
+    ){
+        subReviewService.updateSubReview(updateSubReviewRequest);
+        return GeneralResponse.builder()
+                .message(ENTITY_SUBREVIEW+UPDATED)
+                .status(HttpStatus.OK)
                 .build()
                 .getResponse();
     }
