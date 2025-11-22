@@ -56,6 +56,15 @@ public class LocalServiceImpl implements LocalService {
         if (exist != null)
             throw new LocalAlreadyExistException(ENTITY_LOCAL+EXISTS);
 
+        Boolean existDirection = localRepository
+                .existsLocalByDirection_LatAndDirection_Lng(
+                        createLocalRequest.getDirection().getLat(),
+                        createLocalRequest.getDirection().getLng()
+                );
+
+        if(existDirection)
+            throw new DirectionAlreadyExistException(DIRECTION_EXIST);
+
         if(image != null) {
             String name = SaveImages.saveImagesHandler(image);
 
