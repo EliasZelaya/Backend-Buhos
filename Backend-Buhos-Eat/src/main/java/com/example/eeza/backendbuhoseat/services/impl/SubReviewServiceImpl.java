@@ -18,6 +18,7 @@ import com.example.eeza.backendbuhoseat.utils.mappers.LocalMapper;
 import com.example.eeza.backendbuhoseat.utils.mappers.ReviewMapper;
 import com.example.eeza.backendbuhoseat.utils.mappers.SubReviewMapper;
 import com.example.eeza.backendbuhoseat.utils.mappers.UserMapper;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -35,6 +36,7 @@ public class SubReviewServiceImpl implements SubReviewService {
     private final LocalService localService;
 
     @Override
+    @Transactional
     public void createSubReview(CreateSubReviewRequest createSubReviewRequest, UUID localId) {
         boolean  haveSubReview = subReviewRepository
                 .existsByUser_IdAndReview_Id(createSubReviewRequest.getIdUser(), createSubReviewRequest.getIdReview());
@@ -56,6 +58,8 @@ public class SubReviewServiceImpl implements SubReviewService {
         );
     }
 
+    @Override
+    @Transactional
     public List<SubReviewResponse> getSubReviewsByReview(UUID id) {
         List<SubReviewResponse> subReview = SubReviewMapper.toDtoListResponse(subReviewRepository.findAllByReview_Id(id));
 
@@ -65,6 +69,8 @@ public class SubReviewServiceImpl implements SubReviewService {
         return subReview;
     }
 
+    @Override
+    @Transactional
     public List<SubReviewResponse> getSubReviewsByUserId(UUID id) {
         List<SubReviewResponse> subReview = SubReviewMapper.toDtoListResponse(subReviewRepository.findAllByUser_Id(id));
 
@@ -74,19 +80,27 @@ public class SubReviewServiceImpl implements SubReviewService {
         return subReview;
     }
 
+    @Override
+    @Transactional
     public void updateSubReview(UpdateSubReviewRequest updateSubReviewRequest) {
         SubReview subReview = subReviewRepository
                 .findById(updateSubReviewRequest.getIdSubReview()).orElseThrow(
                         () -> new ReviewNotFoundException(ENTITY_SUBREVIEW+NOT_FOUND)
                 );
-        
+
         if(!updateSubReviewRequest.getContent().isEmpty()) {
             subReview.setContent(updateSubReviewRequest.getContent());
         }
 
         subReviewRepository.save(subReview);
     }
-    public void deleteSubReview(UUID id) {
 
+    @Override
+    @Transactional
+    public void deleteSubReview(UUID id) {
+        subReviewRepository.findById(id)
+                .orElseThrow(()  -> new ReviewNotFoundException(ENTITY_REVIEW+NOT_FOUND));
+
+        subReviewRepository.deleteById(id);
     }
 }

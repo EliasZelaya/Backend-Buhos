@@ -62,4 +62,16 @@ public class SubReviewController {
                 .build()
                 .getResponse();
     }
+
+    @DeleteMapping(DELETE+BY_ID_SUBREVIEW)
+    public ResponseEntity<GeneralResponse> deleteSubReview(
+            @PathVariable UUID idSubReview
+    ) {
+        subReviewService.deleteSubReview(idSubReview);
+        return GeneralResponse.builder()
+                .message(ENTITY_SUBREVIEW+DELETED)
+                .status(HttpStatus.OK)
+                .build()
+                .getResponse();
+    }
 }
