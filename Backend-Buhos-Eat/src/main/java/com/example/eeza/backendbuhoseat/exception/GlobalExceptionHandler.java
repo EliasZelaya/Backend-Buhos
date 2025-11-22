@@ -104,6 +104,11 @@ public class GlobalExceptionHandler {
         return buildErrorResponse(e, HttpStatus.CONFLICT, e.getMessage());
     }
 
+    @ExceptionHandler(SubReviewAlreadyExistException.class)
+    public ResponseEntity<ApiErrorResponse> handleSubReviewAlreadyExistException(SubReviewAlreadyExistException e) {
+        return buildErrorResponse(e, HttpStatus.CONFLICT, e.getMessage());
+    }
+
     //Funcion que se llama para generar una respuesta a la excepcion
     public ResponseEntity<ApiErrorResponse> buildErrorResponse(Exception e, HttpStatus status, Object data) {
         String uri = ServletUriComponentsBuilder.fromCurrentRequestUri().build().getPath(); //Obtiene la uri del error

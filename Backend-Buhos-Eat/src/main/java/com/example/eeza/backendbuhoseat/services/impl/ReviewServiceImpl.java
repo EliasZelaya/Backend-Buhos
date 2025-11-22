@@ -19,6 +19,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 
 import static com.example.eeza.backendbuhoseat.utils.Constants.*;
@@ -46,6 +47,15 @@ public class ReviewServiceImpl implements ReviewService {
                         createReviewRequest, UserMapper.toEntity(user), local
                 ))
         );
+    }
+
+    public ReviewResponse findById(UUID id) {
+        ReviewResponse review = ReviewMapper.toDto(Objects.requireNonNull(reviewRepository.findById(id).orElse(null)));
+
+        if(review == null)
+            throw new ReviewNotFoundException(ENTITY_REVIEW+NOT_FOUND);
+
+        return review;
     }
 
     @Override

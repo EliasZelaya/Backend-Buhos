@@ -9,6 +9,7 @@ import java.util.UUID;
 
 public interface ReviewService {
     void createReview(CreateReviewRequest createReviewRequest);
+    ReviewResponse findById(UUID id);
     List<ReviewResponse> findByLocalId(UUID localId);
     void updateReview(UpdateReviewRequest updateReviewRequest);
     void deleteReview(UUID id);
