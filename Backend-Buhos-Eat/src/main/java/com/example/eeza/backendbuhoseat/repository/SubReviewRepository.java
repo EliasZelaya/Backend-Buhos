@@ -10,4 +10,5 @@ public interface SubReviewRepository extends JpaRepository<SubReview, UUID> {
     List<SubReview> findAllByReview_Id(UUID reviewId);
     List<SubReview> findAllByUser_Id(UUID userId);
     SubReview findByUser_IdAndReview_Id(UUID userId, UUID reviewId);
+    Boolean existsByUser_IdAndReview_Id(UUID userId, UUID reviewId);
 }
