@@ -156,6 +156,17 @@ public class LocalServiceImpl implements LocalService {
             }
 
             if (updateLocalRequest.getDirection() != null) {
+                Boolean existDirection = localRepository
+                        .existsLocalByDirection_LatAndDirection_LngAndIdNot(
+                                updateLocalRequest.getDirection().getLat(),
+                                updateLocalRequest.getDirection().getLng(),
+                                updateLocalRequest.getId()
+                        );
+
+                if(existDirection) {
+                    throw new DirectionAlreadyExistException(DIRECTION_EXIST);
+                }
+
                 local.setDirection(updateLocalRequest.getDirection());
             }
 
