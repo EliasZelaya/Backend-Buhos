@@ -9,7 +9,7 @@ import java.util.UUID;
 
 public interface SubReviewService {
     void createSubReview(CreateSubReviewRequest createSubReviewRequest, UUID localId);
-    List<SubReviewResponse> getSubReviewsByLocal(UUID id);
+    List<SubReviewResponse> getSubReviewsByReview(UUID id);
     List<SubReviewResponse> getSubReviewsByUserId(UUID id);
     void updateSubReview(UUID id, UpdateSubReviewRequest updateSubReviewRequest);
     void deleteSubReview(UUID id);
