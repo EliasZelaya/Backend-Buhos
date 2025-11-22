@@ -6,6 +6,7 @@ import com.example.eeza.backendbuhoseat.domain.dto.response.local.LocalResponse;
 import com.example.eeza.backendbuhoseat.domain.dto.response.review.ReviewResponse;
 import com.example.eeza.backendbuhoseat.domain.dto.response.subreview.SubReviewResponse;
 import com.example.eeza.backendbuhoseat.domain.dto.response.user.UserResponse;
+import com.example.eeza.backendbuhoseat.domain.entities.SubReview;
 import com.example.eeza.backendbuhoseat.exception.ReviewNotFoundException;
 import com.example.eeza.backendbuhoseat.exception.SubReviewAlreadyExistException;
 import com.example.eeza.backendbuhoseat.repository.SubReviewRepository;
@@ -18,7 +19,6 @@ import com.example.eeza.backendbuhoseat.utils.mappers.ReviewMapper;
 import com.example.eeza.backendbuhoseat.utils.mappers.SubReviewMapper;
 import com.example.eeza.backendbuhoseat.utils.mappers.UserMapper;
 import lombok.RequiredArgsConstructor;
-import org.hibernate.annotations.NotFound;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -73,7 +73,18 @@ public class SubReviewServiceImpl implements SubReviewService {
 
         return subReview;
     }
-    public void updateSubReview(UUID id, UpdateSubReviewRequest updateSubReviewRequest) {
+
+    public void updateSubReview(UpdateSubReviewRequest updateSubReviewRequest) {
+        SubReview subReview = subReviewRepository
+                .findById(updateSubReviewRequest.getIdSubReview()).orElseThrow(
+                        () -> new ReviewNotFoundException(ENTITY_SUBREVIEW+NOT_FOUND)
+                );
+        
+        if(!updateSubReviewRequest.getContent().isEmpty()) {
+            subReview.setContent(updateSubReviewRequest.getContent());
+        }
+
+        subReviewRepository.save(subReview);
     }
     public void deleteSubReview(UUID id) {
 

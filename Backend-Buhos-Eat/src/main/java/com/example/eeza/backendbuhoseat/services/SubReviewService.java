@@ -11,6 +11,6 @@ public interface SubReviewService {
     void createSubReview(CreateSubReviewRequest createSubReviewRequest, UUID localId);
     List<SubReviewResponse> getSubReviewsByReview(UUID id);
     List<SubReviewResponse> getSubReviewsByUserId(UUID id);
-    void updateSubReview(UUID id, UpdateSubReviewRequest updateSubReviewRequest);
+    void updateSubReview(UpdateSubReviewRequest updateSubReviewRequest);
     void deleteSubReview(UUID id);
 }
