@@ -1,6 +1,7 @@
 package com.example.eeza.backendbuhoseat.utils.mappers;
 
 import com.example.eeza.backendbuhoseat.domain.dto.request.subreview.CreateSubReviewRequest;
+import com.example.eeza.backendbuhoseat.domain.dto.request.subreview.UpdateSubReviewRequest;
 import com.example.eeza.backendbuhoseat.domain.dto.response.subreview.SubReviewResponse;
 import com.example.eeza.backendbuhoseat.domain.entities.Review;
 import com.example.eeza.backendbuhoseat.domain.entities.SubReview;
@@ -23,6 +24,12 @@ public class SubReviewMapper {
                 .review(review)
                 .user(user)
                 .content(createSubReviewRequest.getContent())
+                .build();
+    }
+
+    public static SubReview toEntityUpdate(SubReviewResponse subReviewResponse) {
+        return SubReview.builder()
+                .content(subReviewResponse.getContent())
                 .build();
     }
 
