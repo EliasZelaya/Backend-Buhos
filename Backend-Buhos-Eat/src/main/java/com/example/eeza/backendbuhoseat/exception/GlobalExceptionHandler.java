@@ -95,8 +95,13 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(JsonMapperException.class)
-    public ResponseEntity<ApiErrorResponse>  handleJsonMapperException(JsonMapperException e) {
+    public ResponseEntity<ApiErrorResponse> handleJsonMapperException(JsonMapperException e) {
         return  buildErrorResponse(e, HttpStatus.BAD_REQUEST, e.getMessage());
+    }
+
+    @ExceptionHandler(DirectionAlreadyExistException.class)
+    public ResponseEntity<ApiErrorResponse> handleDirectionAlreadyExistException(DirectionAlreadyExistException e) {
+        return buildErrorResponse(e, HttpStatus.CONFLICT, e.getMessage());
     }
 
     //Funcion que se llama para generar una respuesta a la excepcion

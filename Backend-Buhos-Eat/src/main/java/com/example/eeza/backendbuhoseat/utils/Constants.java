@@ -44,6 +44,7 @@ public class Constants {
     public static final String JSON_MAPPER = "Cannot map request";
     public static final String NOT_PASSWORD_EQUALS = "Passwords don't match";
     public static final String HAVE_REVIEW = " already has a review";
+    public static final String DIRECTION_EXIST ="Direction already exists";
 
     //Response Message
     public static final String CREATED =  " Created Successfully";
