@@ -11,4 +11,5 @@ public interface LocalRepository extends JpaRepository<Local, UUID> {
     Local findByName(String name);
     Local findLocalById(UUID id);
     Boolean existsLocalByDirection_LatAndDirection_Lng(Double directionLat, Double directionLng);
+    Boolean existsLocalByDirection_LatAndDirection_LngAndIdNot(Double directionLat, Double directionLng, UUID id);
 }
