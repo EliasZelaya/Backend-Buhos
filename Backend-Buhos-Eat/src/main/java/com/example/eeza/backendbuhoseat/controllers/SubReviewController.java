@@ -29,4 +29,14 @@ public class SubReviewController {
                 .build()
                 .getResponse();
     }
+
+    @GetMapping(GET_ALL)
+    public ResponseEntity<GeneralResponse> getAllSubReviewsByReview(@RequestParam UUID idReview){
+        return GeneralResponse.builder()
+                .message(ENTITY_SUBREVIEW+FOUND)
+                .status(HttpStatus.OK)
+                .data(subReviewService.getSubReviewsByReview(idReview))
+                .build()
+                .getResponse();
+    }
 }
