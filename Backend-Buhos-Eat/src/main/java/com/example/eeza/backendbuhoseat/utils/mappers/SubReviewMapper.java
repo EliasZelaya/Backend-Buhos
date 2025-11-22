@@ -6,6 +6,8 @@ import com.example.eeza.backendbuhoseat.domain.entities.Review;
 import com.example.eeza.backendbuhoseat.domain.entities.SubReview;
 import com.example.eeza.backendbuhoseat.domain.entities.User;
 
+import java.util.List;
+
 public class SubReviewMapper {
     public static SubReviewResponse toDtoResponse(SubReview subReview) {
         return SubReviewResponse.builder()
@@ -22,5 +24,11 @@ public class SubReviewMapper {
                 .user(user)
                 .content(createSubReviewRequest.getContent())
                 .build();
+    }
+
+    public static List<SubReviewResponse> toDtoListResponse(List<SubReview> subReviews) {
+        return subReviews.stream()
+                .map(SubReviewMapper::toDtoResponse)
+                .toList();
     }
 }
