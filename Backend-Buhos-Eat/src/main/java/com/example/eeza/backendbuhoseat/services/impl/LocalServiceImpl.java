@@ -192,7 +192,7 @@ public class LocalServiceImpl implements LocalService {
     @Transactional
     public void deleteLocalById(UUID id) {
         LocalResponse local = LocalMapper.toDto(localRepository.findById(id).orElseThrow(
-                () -> new LocalNotFoundException(ENTITY_USER+NOT_FOUND))
+                () -> new LocalNotFoundException(ENTITY_LOCAL+NOT_FOUND))
         );
 
         try {
