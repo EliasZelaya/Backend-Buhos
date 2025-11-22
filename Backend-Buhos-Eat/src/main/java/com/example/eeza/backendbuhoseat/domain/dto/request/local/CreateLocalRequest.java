@@ -1,6 +1,5 @@
 package com.example.eeza.backendbuhoseat.domain.dto.request.local;
 
-import com.example.eeza.backendbuhoseat.domain.entities.User;
 import com.example.eeza.backendbuhoseat.utils.Type;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
