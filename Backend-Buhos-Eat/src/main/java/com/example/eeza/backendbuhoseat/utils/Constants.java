@@ -27,6 +27,9 @@ public class Constants {
     //Endpoint for Review
     public static final String SUBREVIEW = "/subReview";
     public static final String BY_ID_SUBREVIEW = "/{idSubReview}";
+    //Endpoint for role
+    public static final String ROLE = "/role";
+    public static final String BY_ID_ROLE = "/{idRole}";
     //Auth
     public static final String AUTH = "/auth";
     public static final String LOGIN = "/login";
@@ -38,6 +41,7 @@ public class Constants {
     public static final String ENTITY_FAVORITE =  "Favorite";
     public static final String ENTITY_REVIEW =  "Review";
     public static final String ENTITY_SUBREVIEW =  "Subreview";
+    public static final String ENTITY_ROLE =  "Role";
 
     //Exceptions Message
     public static final String NOT_FOUND =  " Not Found";
@@ -78,6 +82,7 @@ public class Constants {
     public static final String EMPTY_CONTENT = "Content cannot be empty";
     public static final String LESS_ZERO_STARS = "Stars cannot be negative";
     public static final String MORE_FIVE_STARS = "Stars cannot be more than 5";
+    public static final String ROL_NAME_EMPTY = "Role Name cannot be empty";
 
     //Path file
     public static final String PATH_FILE = "uploads";

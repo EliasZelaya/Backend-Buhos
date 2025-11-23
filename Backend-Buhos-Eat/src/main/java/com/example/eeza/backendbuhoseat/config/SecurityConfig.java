@@ -46,9 +46,10 @@ public class SecurityConfig implements WebMvcConfigurer {
                                     "/api/auth/**",
                                     "/api/user/create",
                                     "/api/local/getAll",
+                                    "/api/local/get/**",
                                     "/api/plate/getAll/**",
-                                    "/api/review/getAll/**"
-
+                                    "/api/review/getAll/**",
+                                    "/api/role/**"
                             ).permitAll()
                             .requestMatchers("/uploads/**").permitAll()
                             .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()

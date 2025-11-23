@@ -20,5 +20,6 @@ public class Rol {
     private UUID id;
 
     @Column(name = "name")
-    private String name;
+    @Enumerated(EnumType.STRING)
+    private com.example.eeza.backendbuhoseat.utils.Rol name;
 }
