@@ -1,5 +1,6 @@
 package com.example.eeza.backendbuhoseat.services.impl;
 
+import com.example.eeza.backendbuhoseat.domain.dto.request.role.CreateRolRequest;
 import com.example.eeza.backendbuhoseat.domain.dto.response.rol.RolResponse;
 import com.example.eeza.backendbuhoseat.exception.RolNotFoundException;
 import com.example.eeza.backendbuhoseat.repository.RolRepository;
@@ -19,6 +20,11 @@ public class RolServiceImpl implements RolService {
     @Autowired
     public RolServiceImpl(RolRepository rolRepository) {
         this.rolRepository = rolRepository;
+    }
+
+    @Override
+    public void createRol(CreateRolRequest createRolRequest) {
+        rolRepository.save(RolMapper.toEntityCreate(createRolRequest));
     }
 
     @Override

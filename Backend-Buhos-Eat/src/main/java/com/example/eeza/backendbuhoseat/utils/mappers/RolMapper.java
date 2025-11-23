@@ -1,5 +1,6 @@
 package com.example.eeza.backendbuhoseat.utils.mappers;
 
+import com.example.eeza.backendbuhoseat.domain.dto.request.role.CreateRolRequest;
 import com.example.eeza.backendbuhoseat.domain.dto.response.rol.RolResponse;
 import com.example.eeza.backendbuhoseat.domain.entities.Rol;
 
@@ -13,6 +14,12 @@ public class RolMapper {
     public static Rol toEntity(RolResponse rol) {
         return Rol.builder()
                 .id(rol.getId())
+                .build();
+    }
+
+    public static Rol toEntityCreate(CreateRolRequest createRolRequest) {
+        return Rol.builder()
+                .name(createRolRequest.getRolName())
                 .build();
     }
 }
