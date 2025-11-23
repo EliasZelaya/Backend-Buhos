@@ -3,7 +3,6 @@ package com.example.eeza.backendbuhoseat.controllers;
 import com.example.eeza.backendbuhoseat.domain.dto.request.subreview.CreateSubReviewRequest;
 import com.example.eeza.backendbuhoseat.domain.dto.request.subreview.UpdateSubReviewRequest;
 import com.example.eeza.backendbuhoseat.domain.dto.response.GeneralResponse;
-import com.example.eeza.backendbuhoseat.domain.entities.SubReview;
 import com.example.eeza.backendbuhoseat.services.SubReviewService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
