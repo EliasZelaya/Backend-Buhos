@@ -38,12 +38,6 @@ public class SubReviewServiceImpl implements SubReviewService {
     @Override
     @Transactional
     public void createSubReview(CreateSubReviewRequest createSubReviewRequest, UUID localId) {
-        boolean  haveSubReview = subReviewRepository
-                .existsByUser_IdAndReview_Id(createSubReviewRequest.getIdUser(), createSubReviewRequest.getIdReview());
-
-        if (haveSubReview)
-            throw new SubReviewAlreadyExistException(ENTITY_SUBREVIEW+EXISTS);
-
         UserResponse user = userService.getUserById(createSubReviewRequest.getIdUser());
         ReviewResponse review = reviewService.findById(createSubReviewRequest.getIdReview());
         LocalResponse local = localService.getLocalById(localId);
