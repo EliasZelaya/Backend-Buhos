@@ -35,12 +35,6 @@ public class ReviewServiceImpl implements ReviewService {
     public void createReview(CreateReviewRequest createReviewRequest) {
         UserResponse user = userService.getUserById(createReviewRequest.getUserId());
         Local local = localRepository.findLocalById(createReviewRequest.getLocalId());
-        boolean haveReview = reviewRepository.findByUser_IdAndLocal_Id(
-                createReviewRequest.getUserId(), createReviewRequest.getLocalId()
-        ).isEmpty();
-
-        if (!haveReview)
-            throw new UserAlreadyHaveReviewException(ENTITY_USER+HAVE_REVIEW);
 
         ReviewMapper.toDto(
                 reviewRepository.save(ReviewMapper.toEntityCreate(
